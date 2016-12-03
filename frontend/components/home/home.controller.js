@@ -7,48 +7,22 @@
 	homeCtrlFunc.$inject = ['$scope', '$http', '$filter', '$location'];
 
 	function homeCtrlFunc($scope, $http, $filter, $location){
-		$scope.posts = [
-			{
-				"title"		: 		"Title",
-				"content"	: 		"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa."	
-			},
-			{
-				"title"		: 		"Title",
-				"content"	: 		"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. "	
-			},
-			{
-				"title"		: 		"Title",
-				"content"	: 		"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa."	
-			},
-			{
-				"title"		: 		"Title",
-				"content"	: 		"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa."	
-			},
-			{
-				"title"		: 		"Title",
-				"content"	: 		"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
-			},
-			{
-				"title"		: 		"Title",
-				"content"	: 		"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa."	
-			},	
-			{
-				"title"		: 		"Title",
-				"content"	: 		"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa."	
-			},
-			{
-				"title"		: 		"Title",
-				"content"	: 		"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa."	
-			},
-			{
-				"title"		: 		"Title",
-				"content"	: 		"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa."	
-			},
-			{
-				"title"		: 		"Title",
-				"content"	: 		"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa."	
-			}
-		];
+
+		$http({
+			method: 'GET',
+			url: 'http://localhost:3000/get-posts'
+		}).then(success, error);
+
+		function success (response) {
+			$scope.posts = response.data;
+			console.log(response.data[0]);
+		};
+
+		function error (response) {
+			console.log(response);
+
+		};
+	
 
 	};
 })();

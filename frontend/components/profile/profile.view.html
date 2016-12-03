@@ -7,8 +7,8 @@
 		<div layout="row" flex="40">
 			<span flex="20"></span>
 
-			<div flex="30" id="nameContainer" layout="column" layout-align="start start">
-				<h2>{{user.firstname+" "+user.lastname}}</h2>
+			<div flex="30" id="nameContainer" layout="column" layout-align="center start">
+				<h2>{{user.username | uppercase}}</h2>
 			</div>
 
         	<div flex="30" layout="column">
@@ -37,10 +37,6 @@
 						<p>Likes</p>
 					</div>
 
-					<div flex layout="column" ng-click="$parent.form='followers'">
-						<p>Followers</p>
-					</div>
-
 					<div flex layout="column" ng-click="$parent.form='following'">
 						<p>Following</p>
 					</div>
@@ -58,10 +54,6 @@
 
 					<div layout="row" ng-switch-when="likes">
 						<h5>Likes</h5>
-					</div>
-
-					<div layout="row" ng-switch-when="followers">
-						<h5>Followers</h5>
 					</div>
 
 					<div layout="row" ng-switch-when="following">
