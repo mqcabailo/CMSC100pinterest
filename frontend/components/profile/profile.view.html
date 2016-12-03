@@ -1,0 +1,77 @@
+<div ng-include="'components/shared/navbar.html'">
+</div>
+<div flex id="profileView" layout="column">
+	<div flex layout="column" class="main">
+		<span flex="10" ></span>
+
+		<div layout="row" flex="40">
+			<span flex="20"></span>
+
+			<div flex="30" id="nameContainer" layout="column" layout-align="start start">
+				<h2>{{user.firstname+" "+user.lastname}}</h2>
+			</div>
+
+        	<div flex="30" layout="column">
+          		<div flex="100" id="displayPic">
+            		<img ng-src="{{ picture }}">
+          		</div>
+          	</div>
+
+          	<span flex="20"></span>
+		</div>
+
+		<div layout="row" flex="50">
+			<span flex="20"></span>
+
+			<div flex-xs="80" flex="60" layout-xs="row" layout="column">
+				<div flex-xs="40" layout-align="start start" layout-xs="column" layout="row">
+					<div flex layout="column" ng-click="$parent.form='default'">
+						<p>Boards</p>
+					</div>
+
+					<div flex layout="column" ng-click="$parent.form='pins'">
+						<p>Pins</p>
+					</div>
+
+					<div flex layout="column" ng-click="$parent.form='likes'">
+						<p>Likes</p>
+					</div>
+
+					<div flex layout="column" ng-click="$parent.form='followers'">
+						<p>Followers</p>
+					</div>
+
+					<div flex layout="column" ng-click="$parent.form='following'">
+						<p>Following</p>
+					</div>
+					
+				</div>
+
+				<div flex-xs="60" flex="90" layout="column" ng-switch on="form">
+					<div layout="row" ng-switch-default>
+						<h5>Boards</h5>
+					</div>
+
+					<div layout="row" ng-switch-when="pins">
+						<h5>Pins</h5>
+					</div>
+
+					<div layout="row" ng-switch-when="likes">
+						<h5>Likes</h5>
+					</div>
+
+					<div layout="row" ng-switch-when="followers">
+						<h5>Followers</h5>
+					</div>
+
+					<div layout="row" ng-switch-when="following">
+						<h5>Following</h5>
+					</div>
+				</div>
+			
+			</div>
+			<span flex-xs="0" flex="20"></span>
+		</div>
+
+	</div>
+</div>

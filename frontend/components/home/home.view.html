@@ -1,0 +1,34 @@
+<div flex="10" ng-include="'components/shared/navbar.html'"></div>
+
+<div flex="90" id="homeView" layout-xs="column" layout="column">
+
+	<md-content class="md-padding" layout-xs="column" layout="row">
+		<div layout="row" flex = "25">
+			<div layout="column" ng-repeat="post in posts">
+				
+				<md-card >
+					
+					<md-card-title>
+						<md-card-title-text>
+							<span class="md-headline">{{ post.title }}</span>
+						</md-card-title-text>
+					</md-card-title>
+
+					<md-card-content>
+						<p>{{ post.content }}</p>
+					</md-card-content>
+
+					<md-card-action layout="row" layout-align="start start">
+						<md-button class="md-icon-button" aria-label="Pin">
+							<md-icon md-svg-icon="resources/img/icons/ic_favorite_black_24px.svg"></md-icon>
+						</md-button>
+					</md-card-action>
+
+				</md-card>
+			</div>
+		</div>
+
+	</md-content>
+
+
+</div>

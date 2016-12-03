@@ -1,0 +1,19 @@
+body {
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+#navbar {
+	position: fixed;
+	padding-bottom: 0;
+	margin-bottom: 0;
+	min-height: 30px;
+	background-color: white;
+}
+
+#searchBar{
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
