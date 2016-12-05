@@ -4,9 +4,13 @@
 	var app = angular.module('pinterest');
 	app.controller('profileCtrl', profileCtrlFunc);
 
-	profileCtrlFunc.$inject = ['$scope', '$http', '$filter', '$location'];
+	profileCtrlFunc.$inject = ['$scope', '$http', '$filter', '$location', 'authService', 'navbarService'];
 
-	function profileCtrlFunc($scope, $http, $filter, $location){
+	function profileCtrlFunc($scope, $http, $filter, $location, authService, navbarService){
+		authService.auth();
+
+		$scope.nav = navbarService.nav();
+
 		$scope.boards = {};
 		$scope.user = {};
 		$scope.fboards = {};
@@ -14,7 +18,7 @@
 
 		$http({
 			method: 'GET',
-			url: 'http://localhost:3000/profile/2'
+			url: 'http://localhost:3000/profile/' + authService.getSession().user_id
 		}).then(success, error);
 
 		function success (response) {
@@ -28,7 +32,7 @@
 		$scope.getBoards = function(){
 			$http({
 				method: 'GET',
-				url: 'http://localhost:3000/profile/2/getBoards'
+				url: 'http://localhost:3000/profile/' + authService.getSession().user_id + '/getBoards'
 			}).then(success, error);
 
 			function success (response) {
@@ -43,7 +47,7 @@
 		$scope.getFollowedBoards = function(){
 			$http({
 				method: 'GET',
-				url: 'http://localhost:3000/profile/2/getFollowedBoards'
+				url: 'http://localhost:3000/profile/' + authService.getSession().user_id + '/getFollowedBoards'
 			}).then(success, error);
 
 			function success (response) {
@@ -60,7 +64,7 @@
 		$scope.getFollowedPosts = function(){
 			$http({
 				method: 'GET',
-				url: 'http://localhost:3000/profile/1/getFollowedPosts'
+				url: 'http://localhost:3000/profile/' + authService.getSession().user_id + '/getFollowedPosts'
 			}).then(success, error);
 
 			function success (response) {

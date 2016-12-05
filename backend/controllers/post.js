@@ -52,6 +52,7 @@ exports.deletePost = (req, res) => {
 }
 
 exports.getFeed = (req, res) => {
+	console.log(req.body);
 	const connect = connection.getConnection();
 	connect.query('SELECT DISTINCT post.post_id, post.topic, post.content, post.time_stamp FROM post, board, post_to_board, follow_post, follow_board, user \
 		WHERE (post_to_board.post_id = post.post_id AND post_to_board.board_id = board.board_id AND board.user_id = user.user_id AND user.user_id = ?) \
