@@ -4,7 +4,7 @@
 	<div flex layout="column" class="main">
 		<span flex="10" ></span>
 
-		<div layout="row" flex="40">
+		<div layout-xs="column" layout="row" flex="40" layout-align-xs="center center">
 			<span flex="20"></span>
 
 			<div flex="30" id="nameContainer" layout="column" layout-align="center start">
@@ -25,7 +25,7 @@
 
 			<div flex-xs="80" flex="60" layout-xs="row" layout="column">
 				<div flex-xs="40" layout-align="start start" layout-xs="column" layout="row">
-					<div flex layout="column" ng-click="$parent.form='default'">
+					<div flex layout="column" ng-click="getBoards(); $parent.form='default'">
 						<p>Boards</p>
 					</div>
 
@@ -45,7 +45,21 @@
 
 				<div flex-xs="60" flex="90" layout="column" ng-switch on="form">
 					<div layout="row" ng-switch-default>
-						<h5>Boards</h5>
+						<md-content class="md-padding" layout-xs="column" layout="row">
+							<div layout="row" flex = "25">
+								<div layout="column" ng-repeat="board in boards">
+									<md-card >
+										<md-card-title>
+											<md-card-title-text>
+												<span class="md-headline">{{ board.board_title }}</span>
+											</md-card-title-text>
+										</md-card-title>
+
+									</md-card>
+								</div>
+							</div>
+
+						</md-content>
 					</div>
 
 					<div layout="row" ng-switch-when="pins">
@@ -56,8 +70,48 @@
 						<h5>Likes</h5>
 					</div>
 
-					<div layout="row" ng-switch-when="following">
-						<h5>Following</h5>
+					<div layout="column" ng-switch-when="following" layout-align="center center">
+						<div layout="row" flex="20">
+							<md-button ng-click="getFollowedBoards(); $parent.follow='fboards'">Boards</md-button>
+							<md-button ng-click="getFollowedPosts(); $parent.follow='fposts'">Posts</md-button>
+						</div>
+
+						<div flex="20" layout="row" ng-switch on="follow">
+							<div flex="100" ng-switch-when="fboards">
+								<md-content class="md-padding" layout-xs="column" layout="row">
+									<div layout="row" flex = "25">
+										<div layout="column" ng-repeat="fboard in fboards">
+											<md-card >
+												<md-card-title>
+													<md-card-title-text>
+														<span class="md-headline">{{ fboard.board_title }}</span>
+													</md-card-title-text>
+												</md-card-title>
+
+											</md-card>
+										</div>
+									</div>
+
+								</md-content>
+							</div>
+
+							<div flex="100" ng-switch-when="fposts">
+								<md-content class="md-padding" layout-xs="column" layout="row">
+									<div layout="row" flex = "25">
+										<div layout="column" ng-repeat="fpost in fposts">
+											<md-card >
+												<md-card-title>
+													<md-card-title-text>
+														<span class="md-headline">{{ fpost.topic }}</span>
+													</md-card-title-text>
+												</md-card-title>
+
+											</md-card>
+										</div>
+									</div>
+								</md-content>
+							</div>
+						</div>
 					</div>
 				</div>
 			

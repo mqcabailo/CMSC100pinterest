@@ -15,26 +15,36 @@
 					<h2>Register</h2>
 				</div>
 				
-				<div flex="20" layout="row">
-					<span flex="15"></span>
-					<md-input-container flex="70">
-						<input flex ng-model="new.email" placeholder="E-mail">
-					</md-input-container>
-					<span flex="15"></span>
-				</div>
-				
-				<div flex="20" layout="row">
-					<span flex="15"></span>
-					<md-input-container flex="70">
-						<input flex ng-model="new.password" placeholder="Password">
-					</md-input-container>
-					<span flex="15"></span>
-				</div>
+				<div flex="20" layout="column">
+					<div layout="row">
+						<span flex="15"></span>
+						<md-input-container flex="70">
+							<input flex ng-model="new.username" placeholder="Username">
+						</md-input-container>
+						<span flex="15"></span>
+					</div>
 
-				<div flex="5" layout="row">
-					<span flex="15"></span>
-					<md-button flex class="md-raised md-primary">Create Account</md-button>
-					<span flex="15"></span>
+					<div layout="row">
+						<span flex="15"></span>
+						<md-input-container flex="70">
+							<input flex ng-model="new.email" placeholder="E-mail">
+						</md-input-container>
+						<span flex="15"></span>
+					</div>
+
+					<div layout="row">
+						<span flex="15"></span>
+						<md-input-container flex="70">
+							<input flex ng-model="new.password" placeholder="Password">
+						</md-input-container>
+						<span flex="15"></span>
+					</div>
+
+					<div flex="5" layout="row">
+						<span flex="15"></span>
+						<md-button flex class="md-raised md-primary" ng-click="register()">Create Account</md-button>
+						<span flex="15"></span>
+					</div>
 				</div>
 
 				<div flex="35" layout="column" layout-align="center center">
@@ -44,38 +54,42 @@
 			</div>
 
 			<div flex="100" layout="column" id="loginContainer" ng-switch-when="login">
+
 				<div flex="20" layout="row" layout-align="start center">
 					<span flex="10"></span>
 					<h2>Login</h2>
 				</div>
 				
-				<div flex="20" layout="row">
-					<span flex="15"></span>
-					<md-input-container flex="70">
-						<input flex ng-model="user.email" placeholder="E-mail">
-					</md-input-container>
-					<span flex="15"></span>
-				</div>
-				
-				<div flex="20" layout="row">
-					<span flex="15"></span>
-					<md-input-container flex="70">
-						<input flex ng-model="user.password" placeholder="Password">
-					</md-input-container>
-					<span flex="15"></span>
-				</div>
+				<div flex="20" layout="column">
+					<div layout="row">
+						<span flex="15"></span>
+						<md-input-container flex="70">
+							<input flex ng-model="user.email" placeholder="E-mail">
+						</md-input-container>
+						<span flex="15"></span>
+					</div>
 
-				<div flex="5" layout="row">
-					<span flex="15"></span>
-					<md-button flex class="md-raised md-primary">Log In</md-button>
-					<span flex="15"></span>
+					<div layout="row">
+						<span flex="15"></span>
+						<md-input-container flex="70">
+							<input flex ng-model="user.password" placeholder="Password">
+						</md-input-container>
+						<span flex="15"></span>
+					</div>
+
+					<div flex="5" layout="row">
+						<span flex="15"></span>
+						<md-button flex="70" class="md-raised md-primary" ng-click="login()">Log In</md-button>
+						<span flex="15"></span>
+					</div>
+
 				</div>
 
 				<div flex="35" layout="column" layout-align="center center">
 					<p>Don't have an account? <a href="" ng-click="$parent.form='default'"> Create Account </a></p> 
 				</div>
-			</div>
 
+			</div>
 		</div>
 
 		<div flex-xs="5" flex-gt-xs="25"></div>

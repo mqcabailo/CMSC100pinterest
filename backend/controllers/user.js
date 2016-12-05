@@ -8,8 +8,22 @@ exports.login = (req, res) => {
 				if(!err){
 					res.send('Log-In Success')
 				}else{
-					console.log(err);
+					res.send(err);
 				}
 	});
+}
+
+exports.createUser = (req, res) => {
+	const connect = connection.getConnection();
+	connect.query('INSERT INTO user(email, password, username) \
+	VALUES(?, PASSWORD(CONCAT(MD5(?), "AcR6yffDKw")), ?)'),
+	[req.body.email, req.body.password, req.body.username],
+	(err, rows, fields) => {
+		if(!err){
+			res.send('Creation Success');
+		}else{
+			res.send(err);
+		}
+	}
 
 }
